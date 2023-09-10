@@ -1,0 +1,173 @@
+body {
+  background-color: rgb(216, 240, 248);
+  padding: 20px;
+  font-family: 'Roboto', sans-serif;
+}
+
+main {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+p {
+  text-align: center;
+}
+
+th {
+  border: 2px solid rgb(52, 101, 134);
+  border-radius: 5px;
+  padding: 5px;
+  background-color: rgb(97, 164, 209);
+  font-size: 16px;
+}
+
+td {
+  border: 1px solid gray;
+  padding: 3px;
+  text-align: center;
+  border-radius: 3px;
+  max-width: 150px;
+  font-size: 17px;
+}
+
+input {
+  text-align: right;
+  padding: 5px;
+  width: 130px;
+}
+
+select {
+  text-align: center;
+}
+
+input,
+select {
+  font-size: 17px;
+}
+
+.inputs-container {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 15px;
+  max-width: 800px;
+}
+
+.delete-button-container {
+  position: relative;
+}
+
+.delete-button {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  right: -4px;
+  top: -2px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-button:hover {
+  opacity: 1;
+}
+
+.delete-button:active {
+  opacity: 0.7;
+}
+
+.description--title {
+  font-weight: bold;
+  font-size: 19px;
+}
+
+.description {
+  margin-top: 0;
+  margin-bottom: 40px;
+  font-size: 17px;
+  font-weight: 500;
+  max-width: 1000px;
+  background-color: rgb(164, 218, 236);
+  padding: 15px;
+  border-radius: 20px;
+  line-height: 23px;
+}
+
+.inputs-button {
+  padding: 10px 20px;
+  margin: 15px 7px;
+  background-color: rgb(42, 181, 236);
+  font-size: 18px;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.alert-text {
+  color: red;
+  margin-top: 0;
+  font-size: 17px;
+}
+
+.reset-alert {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  margin: -28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reset-alert--inner-container {
+  background-color: rgb(38, 130, 192);
+  width: 350px;
+  height: 180px;
+  padding: 20px;
+}
+
+.reset-alert--inner-container p {
+  font-size: 20px;
+  color: white;
+}
+
+.reset-alert--buttons-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px
+}
+
+.reset-alert--buttons-container button {
+  padding: 10px 25px;
+  font-size: 18px;
+  border: none;
+  border-radius: 15px;
+  margin-top: 20px;
+  background-color: rgb(19, 78, 97);
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.reset-alert--buttons-container button:hover {
+  background-color: rgb(6, 46, 59);
+}
+
+.reset-alert--buttons-container button:active {
+  opacity: 0.6;
+}
