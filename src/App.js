@@ -29,7 +29,7 @@ export default function App() {
   function inputReset() {
     courseInputs.name.current.value = ''
     courseInputs.professor.current.value = ''
-    courseInputs.unit.current.value = 0
+    courseInputs.unit.current.value = ''
     courseInputs.day.current.value = ''
     courseInputs.time.current.value = ''
     courseInputs.classType.current.value = ''
@@ -91,7 +91,7 @@ export default function App() {
     }
     
     if (!codeFound) {
-      if (courseInputs.name.current.value === '' || courseInputs.professor.current.value === '' || courseInputs.unit.current.value === '0' || courseInputs.day.current.value === '' || courseInputs.time.current.value === '' || courseInputs.classType.current.value === '') {
+      if (courseInputs.name.current.value === '' || courseInputs.professor.current.value === '' || courseInputs.unit.current.value === '' || courseInputs.day.current.value === '' || courseInputs.time.current.value === '' || courseInputs.classType.current.value === '') {
         setAlertText('اطلاعات لازم برای درس به طور کامل وارد نشده اند. لطفا اطلاعات را کامل کرده و دوباره امتحان کنید')
         return true
       }
@@ -215,7 +215,7 @@ export default function App() {
 
             professor: courseInputs.professor.current.value === '' ? course.professor : courseInputs.professor.current.value,
 
-            unit: courseInputs.unit.current.value === '0' ? course.unit : courseInputs.unit.current.value,
+            unit: courseInputs.unit.current.value === '' ? course.unit : courseInputs.unit.current.value,
             
             times: (courseInputs.day.current.value === '' || courseInputs.time.current.value === '' || courseInputs.classType.current.value === '') ? course.times : [
               {
@@ -253,7 +253,8 @@ export default function App() {
         <input type="text" placeholder="*نام درس" ref={courseInputs.name} />
         <input type="text" placeholder="*نام استاد" ref={courseInputs.professor} />
         <select ref={courseInputs.unit}>
-          <option value={0}>*واحد درسی</option>
+          <option value={''}>*واحد درسی</option>
+          <option value={0}>0</option>
           <option value={1}>1</option>
           <option value={2}>2</option>
           <option value={3}>3</option>
