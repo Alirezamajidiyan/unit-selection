@@ -42,6 +42,7 @@ export default function App() {
   }
 
   useEffect(() => {
+    setTheme(siteTheme)
     inputReset()
     localStorage.setItem('courses', JSON.stringify(courses))
     setTotalUnits(() => {
