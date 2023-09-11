@@ -193,3 +193,7 @@ select {
   font-size: 17px;
   font-weight: bold;
 }
+
+.update-text {
+  color: rgb(218, 33, 110);
+}
