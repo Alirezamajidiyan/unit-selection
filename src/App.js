@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import './style.css';
 import TimeTable from "./components/TimeTable";
 import CourseTable from "./components/CourseTable";
+import setTheme from "./scripts/theme";
 
 let timeoutID = 1
 
@@ -13,6 +14,9 @@ export default function App() {
   const [alertText, setAlertText] = useState('')
   const [resetAlert, setResetAlert] = useState(false)
   const [totalUnits, setTotalUnits] = useState(0)
+  const [siteTheme, setSiteTheme] = useState(
+    JSON.parse(localStorage.getItem('theme')) || 'blue'
+  )
 
   const courseInputs = {
     code: useRef(null),
@@ -237,10 +241,20 @@ export default function App() {
       setAlertText('کد درس وارد شده یافت نشد')
     }
   }
+  
+  useEffect(() => {
+    setTheme(siteTheme)
+    localStorage.setItem('theme', JSON.stringify(siteTheme))
+  }, [siteTheme])
 
   return (
     <main>
-      <h1>پیش انتخاب واحد</h1>
+      <div className="theme-container">
+        <div onClick={() => setSiteTheme('blue')} className="blue-theme"></div>
+        <div onClick={() => setSiteTheme('pink')} className="pink-theme"></div>
+        <span>:تم سایت</span>
+      </div>
+      <h1>پلن انتخاب واحد</h1>
       <p className="creator-name">**ساخته شده توسط امیر نظری**</p>
       <p className="description">
         <span className="description--title">توضیحات قبل از استفاده از سایت:</span> سعی شود تمامی ورودی های خواسته شده با دقت وارد شود. درصورت نیاز به اضافه کردن ساعت کلاسی به درس خاصی، کد درس مربوطه را وارد کنید و سپس فقط روز و ساعت و نوع برگزاری کلاس را مشخص کنید و بقیه فیلدها را خالی بگذارید. برای حذف درس مورد نظر هم در جدول دوم موس را بر روی گوشه راست باکس کد درس مربوطه برده و روی دکمه حذف کلیک نمایید. برای پرینت برنامه یا تبدیل به فایل پی دی اف، برای روی صفحه کلیک راست کرده و برروی گزینه پرینت کلیک نمایید

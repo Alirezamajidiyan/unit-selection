@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(216, 240, 248);
+  background-color: rgb(255, 175, 228);
   padding: 20px;
   font-family: 'Roboto', sans-serif;
 }
@@ -15,17 +15,23 @@ p {
   text-align: center;
 }
 
+h1 {
+  color: rgb(109, 10, 10);
+}
+
 th {
-  border: 2px solid rgb(52, 101, 134);
+  border: 2px solid rgb(175, 18, 110);
   border-radius: 5px;
   padding: 5px;
-  background-color: rgb(97, 164, 209);
+  color: white;
+  background-color: rgb(226, 24, 148);
   font-size: 16px;
 }
 
 td {
-  border: 1px solid gray;
+  border: 1px solid rgb(177, 87, 154);
   padding: 3px;
+  color: rgb(94, 12, 62);
   text-align: center;
   border-radius: 3px;
   max-width: 150px;
@@ -34,18 +40,21 @@ td {
 
 input {
   text-align: right;
-  padding: 5px;
   width: 130px;
 }
 
 select {
   text-align: center;
-  padding: 5px;
 }
 
 input,
 select {
   font-size: 17px;
+  background-color: rgb(255, 210, 236);
+  color: gray;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 8px;
 }
 
 .inputs-container {
@@ -100,7 +109,8 @@ select {
   font-size: 17px;
   font-weight: 500;
   max-width: 1000px;
-  background-color: rgb(164, 218, 236);
+  background-color: rgb(226, 57, 150);
+  color: white;
   padding: 15px;
   border-radius: 20px;
   line-height: 23px;
@@ -109,17 +119,18 @@ select {
 .inputs-button {
   padding: 10px 20px;
   margin: 15px;
-  background-color: rgb(42, 181, 236);
+  background-color: rgb(240, 24, 132);
   font-size: 18px;
   color: white;
   border: none;
   border-radius: 20px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  opacity: 0.8;
+  transition: opacity 0.3s;
 }
 
 .inputs-button:hover {
-  background-color: rgb(26, 137, 180);
+  opacity: 1;
 }
 
 .inputs-button:active {
@@ -144,10 +155,11 @@ select {
 }
 
 .reset-alert--inner-container {
-  background-color: rgb(38, 130, 192);
+  background-color: rgb(226, 18, 122);
   width: 350px;
   height: 180px;
   padding: 20px;
+  border-radius: 20px;
 }
 
 .reset-alert--inner-container p {
@@ -168,14 +180,15 @@ select {
   border: none;
   border-radius: 15px;
   margin-top: 20px;
-  background-color: rgb(19, 78, 97);
+  background-color: rgb(65, 5, 33);
   color: white;
   cursor: pointer;
-  transition: background-color 0.3s;
+  opacity: 0.8;
+  transition: opacity 0.3s;
 }
 
 .reset-alert--buttons-container button:hover {
-  background-color: rgb(6, 46, 59);
+  opacity: 1;
 }
 
 .reset-alert--buttons-container button:active {
@@ -186,7 +199,7 @@ select {
   margin-top: -5px;
   margin-bottom: 40px;
   font-size: 16px;
-  color: orangered;
+  color: red;
 }
 
 .unit-text {
@@ -195,5 +208,32 @@ select {
 }
 
 .update-text {
-  color: rgb(218, 33, 110);
+  color: rgb(71, 3, 7);
+}
+
+.theme-container {
+  align-self: flex-end;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.theme-container span {
+  font-size: 20px;
+}
+
+.theme-container div {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.blue-theme {
+  background-color: rgb(65, 186, 226);
+}
+
+.pink-theme {
+  background-color: rgb(241, 126, 145);
 }
