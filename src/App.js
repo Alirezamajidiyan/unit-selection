@@ -12,6 +12,7 @@ export default function App() {
 
   const [alertText, setAlertText] = useState('')
   const [resetAlert, setResetAlert] = useState(false)
+  const [totalUnits, setTotalUnits] = useState(0)
 
   const courseInputs = {
     code: useRef(null),
@@ -39,6 +40,11 @@ export default function App() {
   useEffect(() => {
     inputReset()
     localStorage.setItem('courses', JSON.stringify(courses))
+    setTotalUnits(() => {
+      let units = 0
+      courses.forEach(course => units += Number(course.unit))
+      return units
+    })
   }, [courses])
 
   function checkAlert() {
@@ -180,6 +186,7 @@ export default function App() {
   return (
     <main>
       <h1>پیش انتخاب واحد</h1>
+      <p className="creator-name">**ساخته شده توسط امیر نظری**</p>
       <p className="description">
         <span className="description--title">توضیحات قبل از استفاده از سایت:</span> سعی شود تمامی ورودی های خواسته شده با دقت وارد شود. درصورت نیاز به اضافه کردن ساعت کلاسی به درس خاصی، کد درس مربوطه را وارد کنید و سپس فقط روز و ساعت و نوع برگزاری کلاس را مشخص کنید و بقیه فیلدها را خالی بگذارید. برای حذف درس مورد نظر هم در جدول دوم موس را بر روی گوشه راست باکس کد درس مربوطه برده و روی دکمه حذف کلیک نمایید. برای پرینت برنامه یا تبدیل به فایل پی دی اف، برای روی صفحه کلیک راست کرده و برروی گزینه پرینت کلیک نمایید
       </p>
@@ -234,6 +241,7 @@ export default function App() {
       </div>
       <TimeTable courses={courses} />
       <br /><br /><br />
+      <p className="unit-text">تعداد واحد انتخاب شده: {totalUnits}</p>
       <CourseTable courses={courses} deleteCourse={deleteCourse} />
     </main>
   )

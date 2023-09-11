@@ -171,3 +171,15 @@ select {
 .reset-alert--buttons-container button:active {
   opacity: 0.6;
 }
+
+.creator-name {
+  margin-top: -5px;
+  margin-bottom: 40px;
+  font-size: 16px;
+  color: orangered;
+}
+
+.unit-text {
+  font-size: 17px;
+  font-weight: bold;
+}
