@@ -40,6 +40,7 @@ input {
 
 select {
   text-align: center;
+  padding: 5px;
 }
 
 input,
@@ -107,13 +108,22 @@ select {
 
 .inputs-button {
   padding: 10px 20px;
-  margin: 15px 7px;
+  margin: 15px;
   background-color: rgb(42, 181, 236);
   font-size: 18px;
   color: white;
   border: none;
   border-radius: 20px;
   cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.inputs-button:hover {
+  background-color: rgb(26, 137, 180);
+}
+
+.inputs-button:active {
+  opacity: 0.7;
 }
 
 .alert-text {

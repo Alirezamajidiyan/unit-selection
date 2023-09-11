@@ -30,9 +30,9 @@ export default function App() {
     courseInputs.name.current.value = ''
     courseInputs.professor.current.value = ''
     courseInputs.unit.current.value = 0
-    courseInputs.day.current.value = 5
-    courseInputs.time.current.value = 8
-    courseInputs.classType.current.value = 'static'
+    courseInputs.day.current.value = ''
+    courseInputs.time.current.value = ''
+    courseInputs.classType.current.value = ''
     courseInputs.examDate.current.value = ''
     courseInputs.examTime.current.value = ''
   }
@@ -91,8 +91,14 @@ export default function App() {
     }
     
     if (!codeFound) {
-      if (courseInputs.name.current.value === '' || courseInputs.professor.current.value === '' || courseInputs.unit.current.value === '0') {
+      if (courseInputs.name.current.value === '' || courseInputs.professor.current.value === '' || courseInputs.unit.current.value === '0' || courseInputs.day.current.value === '' || courseInputs.time.current.value === '' || courseInputs.classType.current.value === '') {
         setAlertText('اطلاعات لازم برای درس به طور کامل وارد نشده اند. لطفا اطلاعات را کامل کرده و دوباره امتحان کنید')
+        return true
+      }
+    }
+    else {
+      if (courseInputs.day.current.value === '' || courseInputs.time.current.value === '' || courseInputs.classType.current.value === '') {
+        setAlertText('برای اضافه کردن زمان کلاس به درسی نیاز است که تمام ورودی های روزهای هفته، بازه زمانی و نوع برگزاری کلاس وارد شوند')
         return true
       }
     }
@@ -102,7 +108,6 @@ export default function App() {
 
   useEffect(() => {
     clearTimeout(timeoutID)
-    inputReset()
     timeoutID = setTimeout(() => {
       setAlertText('')
     }, 3000)
@@ -183,6 +188,56 @@ export default function App() {
     display: resetAlert ? 'flex' : 'none'
   }
 
+  function editCourse() {
+    if (courseInputs.code.current.value === '') {
+      setAlertText('فیلد کد درس نمی تواند خالی باشد')
+      return
+    }
+
+    if ((courseInputs.day.current.value !== '' || courseInputs.time.current.value !== '' || courseInputs.classType.current.value !== '') 
+    && (courseInputs.day.current.value === '' || courseInputs.time.current.value === '' || courseInputs.classType.current.value === '')) {
+      setAlertText('برای ویرایش زمان کلاس درس مورد نظر باید تمامی فیلد های روز های هفته، بازه زمانی و نوع برگزاری کلاس پر شوند')
+      return
+    }
+
+    let changed = false
+    setCourses(oldCourses => (
+      oldCourses.map(course => {
+        if (course.code !== courseInputs.code.current.value) {
+          return course
+        }
+        else {
+          changed = true
+          return {
+            code: course.code,
+
+            name: courseInputs.name.current.value === '' ? course.name : courseInputs.name.current.value,
+
+            professor: courseInputs.professor.current.value === '' ? course.professor : courseInputs.professor.current.value,
+
+            unit: courseInputs.unit.current.value === '0' ? course.unit : courseInputs.unit.current.value,
+            
+            times: (courseInputs.day.current.value === '' || courseInputs.time.current.value === '' || courseInputs.classType.current.value === '') ? course.times : [
+              {
+                day: courseInputs.day.current.value,
+                startTime: courseInputs.time.current.value,
+                timeType: courseInputs.classType.current.value
+              }
+            ],
+
+            examDate: courseInputs.examDate.current.value === '' ? course.examDate : courseInputs.examDate.current.value,
+
+            examTime: courseInputs.examTime.current.value === '' ? course.examTime : courseInputs.examTime.current.value
+          }
+        }
+      })
+    ))
+    
+    if (!changed) {
+      setAlertText('کد درس وارد شده یافت نشد')
+    }
+  }
+
   return (
     <main>
       <h1>پیش انتخاب واحد</h1>
@@ -196,13 +251,14 @@ export default function App() {
         <input type="text" placeholder="*نام درس" ref={courseInputs.name} />
         <input type="text" placeholder="*نام استاد" ref={courseInputs.professor} />
         <select ref={courseInputs.unit}>
-          <option value={0}>واحد درسی</option>
+          <option value={0}>*واحد درسی</option>
           <option value={1}>1</option>
           <option value={2}>2</option>
           <option value={3}>3</option>
           <option value={4}>4</option>
         </select>
         <select ref={courseInputs.day}>
+          <option value={''}>*روز های هفته</option>
           <option value={5}>شنبه</option>
           <option value={4}>یکشنبه</option>
           <option value={3}>دوشنبه</option>
@@ -211,6 +267,7 @@ export default function App() {
           <option value={0}>پنج شنبه</option>
         </select>
         <select ref={courseInputs.time}>
+          <option value={''}>*بازه زمانی</option>
           <option value={8}>8 - 10</option>
           <option value={10}>10 - 12</option>
           <option value={12}>12 - 14</option>
@@ -219,6 +276,7 @@ export default function App() {
           <option value={18}>18 - 20</option>
         </select>
         <select ref={courseInputs.classType}>
+          <option value={''}>*نوع برگزاری کلاس</option>
           <option value={'static'}>ثابت</option>
           <option value={'odd'}>هفته فرد</option>
           <option value={'even'}> هفته زوج</option>
@@ -228,6 +286,7 @@ export default function App() {
       </div>
       <div className="buttons-container">
         <button onClick={() => setResetAlert(true)} className="inputs-button">پاک کردن همه</button>
+        <button onClick={editCourse} className="inputs-button">ویرایش</button>
         <button onClick={submit} className="inputs-button">ثبت</button>
       </div>
       <div className="reset-alert" style={resetStyle}>
