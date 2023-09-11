@@ -213,7 +213,7 @@ export default function App() {
         </select>
         <select ref={courseInputs.classType}>
           <option value={'static'}>ثابت</option>
-          <option value={'odd'}>هفنه فرد</option>
+          <option value={'odd'}>هفته فرد</option>
           <option value={'even'}> هفته زوج</option>
         </select>
         <input type="text" placeholder="تاریخ امتحان" ref={courseInputs.examDate} />
@@ -225,7 +225,7 @@ export default function App() {
       </div>
       <div className="reset-alert" style={resetStyle}>
         <div className="reset-alert--inner-container">
-          <p>مطمئن هستید که میخواهید کل برنامه و دروس را کامل پاک کنید؟ این عمل غیر قابل بازگشت می باشد</p>
+          <p>مطمئن هستید که میخواهید کل برنامه و دروس را به طور کامل پاک کنید؟ این عمل غیر قابل بازگشت می باشد</p>
           <div className="reset-alert--buttons-container">
             <button onClick={() => setResetAlert(false)}>خیر</button>
             <button onClick={resetLS}>بله</button>
