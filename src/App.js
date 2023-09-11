@@ -58,7 +58,7 @@ export default function App() {
     courses.forEach(course => {
       course.times.forEach(time => {
         if (time.day === courseInputs.day.current.value && time.startTime === courseInputs.time.current.value && course.code === courseInputs.code.current.value) {
-          if (time.timeType === 'static') {
+          if (time.timeType === 'static' || courseInputs.classType.current.value === 'static') {
             needAlert = -1
           }
           else if (time.timeType === courseInputs.classType.current.value) {
@@ -66,7 +66,7 @@ export default function App() {
           }
         }
         else if (time.day === courseInputs.day.current.value && time.startTime === courseInputs.time.current.value) {
-          if (time.timeType === 'static') {
+          if (time.timeType === 'static' || courseInputs.classType.current.value === 'static') {
             needAlert = 1
           }
           else if (time.timeType === courseInputs.classType.current.value) {

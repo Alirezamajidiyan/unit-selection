@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 export default function TimeTable(props) {
   const coursesTime = [];
+  const filled = []
+
   for (let i = 0; i < 6; i++) {
     coursesTime.push([])
+    filled.push([])
   }
+
   const coursesTimeElement = coursesTime.map(() => {
     const temp = []
     for (let i = 0; i < 6; i++) {
@@ -12,6 +16,15 @@ export default function TimeTable(props) {
     }
     return temp
   })
+
+  const innerText = filled.map(() => {
+    const temp = []
+    for (let i = 0; i < 6; i++) {
+      temp.push('')
+    }
+    return temp
+  })
+
 
   const { courses } = props
 
@@ -27,28 +40,39 @@ export default function TimeTable(props) {
     }
   }
 
+  function fillTable(index, timeDay, courseName, timeType) {
+    if (innerText[index][timeDay] === '') {
+      innerText[index][timeDay] = `${courseName} ${timeType}`
+      coursesTimeElement[index][timeDay] = <td>{innerText[index][timeDay]}</td>
+    }
+    else {
+      innerText[index][timeDay] += `/ ${courseName} ${timeType}`
+      coursesTimeElement[index][timeDay] = <td>{innerText[index][timeDay]}</td>
+    }
+  }
+
   courses.forEach(course => {
     const courseName = `${course.name} ${course.professor}`
     course.times.forEach(time => {
       const timeType = checkType(time)
       
       if (time.startTime === "8") {
-        coursesTimeElement[0][time.day] = <td>{courseName} {timeType}</td>
+        fillTable(0, time.day, courseName, timeType)
       }
       else if (time.startTime === "10") {
-        coursesTimeElement[1][time.day] = <td>{courseName} {timeType}</td>
+        fillTable(1, time.day, courseName, timeType)
       }
       else if (time.startTime === "12") {
-        coursesTimeElement[2][time.day] = <td>{courseName} {timeType}</td>
+        fillTable(2, time.day, courseName, timeType)
       }
       else if (time.startTime === "14") {
-        coursesTimeElement[3][time.day] = <td>{courseName} {timeType}</td>
+        fillTable(3, time.day, courseName, timeType)
       }
       else if (time.startTime === "16") {
-        coursesTimeElement[4][time.day] = <td>{courseName} {timeType}</td>
+        fillTable(4, time.day, courseName, timeType)
       }
       else {
-        coursesTimeElement[5][time.day] = <td>{courseName} {timeType}</td>
+        fillTable(5, time.day, courseName, timeType)
       }
     })
   })
