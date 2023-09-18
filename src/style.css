@@ -1,7 +1,14 @@
+@font-face {
+  font-family: "Sahel";
+  src: 
+  url(./fonts/Sahel.eot),
+  url(./fonts/Sahel.ttf),
+  url(./fonts/Sahel.woff2);
+}
 body {
   background-color: rgb(255, 175, 228);
   padding: 20px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Sahel', sans-serif;
 }
 
 main {
