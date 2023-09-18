@@ -1,13 +1,16 @@
 {
   "files": {
-    "main.css": "/unit-selection/static/css/main.aef71103.css",
+    "main.css": "/unit-selection/static/css/main.8d9babbe.css",
     "main.js": "/unit-selection/static/js/main.75faf3c5.js",
+    "static/media/Sahel.eot": "/unit-selection/static/media/Sahel.de9340ec560b044fd86c.eot",
+    "static/media/Sahel.ttf": "/unit-selection/static/media/Sahel.72ea6df7f4ff1b801942.ttf",
+    "static/media/Sahel.woff2": "/unit-selection/static/media/Sahel.1a2efbcab5a0d61e5c0f.woff2",
     "index.html": "/unit-selection/index.html",
-    "main.aef71103.css.map": "/unit-selection/static/css/main.aef71103.css.map",
+    "main.8d9babbe.css.map": "/unit-selection/static/css/main.8d9babbe.css.map",
     "main.75faf3c5.js.map": "/unit-selection/static/js/main.75faf3c5.js.map"
   },
   "entrypoints": [
-    "static/css/main.aef71103.css",
+    "static/css/main.8d9babbe.css",
     "static/js/main.75faf3c5.js"
   ]
 }
