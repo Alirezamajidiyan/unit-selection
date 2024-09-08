@@ -249,7 +249,7 @@ export default function App() {
   }, [siteTheme])
 
   return (
-    <main>
+    <main className="">
       <div className="theme-container">
         <div onClick={() => setSiteTheme('blue')} className="blue-theme"></div>
         <div onClick={() => setSiteTheme('pink')} className="pink-theme"></div>
