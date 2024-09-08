@@ -61,7 +61,7 @@ function App() {
               />
             }
           />
-          <Route path="/unit-selection/about" element={<AboutUs />} />
+          <Route path="/unit-selection/about" element={<AboutUs  theme={siteTheme}/>} />
           <Route element={<NotFound />} />
         </Routes>
         <ToastContainer />

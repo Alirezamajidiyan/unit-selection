@@ -1,12 +1,13 @@
 import TimeTable from "./TimeTable";
 import { useRef, useState, useEffect } from "react";
 import CourseTable from "./CourseTable";
-
+import { toast } from "react-toastify";
 function MainContent({ siteTheme, setSiteTheme, setTotalUnits }) {
-  const [resetAlert, setResetAlert] = useState(false);
   const [courses, setCourses] = useState(
     JSON.parse(localStorage.getItem("courses")) || []
   );
+  const [modal,setModal]=useState('close');
+  const [mapw,setmapw]=useState(false);
   const courseInputs = {
     code: useRef(null),
     name: useRef(null),
@@ -45,14 +46,36 @@ function MainContent({ siteTheme, setSiteTheme, setTotalUnits }) {
     courseInputs.examTime.current.value = "";
   }
   function resetLS() {
-    setResetAlert(false);
+    setModal('open');
     courseInputs.code.current.value = "";
     localStorage.removeItem("courses");
     window.location.reload();
   }
   function editCourse() {
     if (courseInputs.code.current.value === "") {
-      setAlertText("فیلد کد درس نمی تواند خالی باشد");
+      if (siteTheme === "light") {
+        toast.error("فیلد کد درس نمی تواند خالی باشد", {
+          theme: "light",
+          position: "bottom-left",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      } else {
+        toast.error("فیلد کد درس نمی تواند خالی باشد", {
+          theme: "dark",
+          position: "bottom-left",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
       return;
     }
 
@@ -64,8 +87,18 @@ function MainContent({ siteTheme, setSiteTheme, setTotalUnits }) {
         courseInputs.time.current.value === "" ||
         courseInputs.classType.current.value === "")
     ) {
-      setAlertText(
-        "برای ویرایش زمان کلاس درس مورد نظر باید تمامی فیلد های روز های هفته، بازه زمانی و نوع برگزاری کلاس پر شوند"
+      toast.error(
+        "برای ویرایش زمان کلاس درس مورد نظر باید تمامی فیلد های روز های هفته، بازه زمانی و نوع برگزاری کلاس پر شوند",
+        {
+          theme: "light",
+          position: "bottom-left",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        }
       );
       return;
     }
@@ -123,7 +156,29 @@ function MainContent({ siteTheme, setSiteTheme, setTotalUnits }) {
     );
 
     if (!changed) {
-      setAlertText("کد درس وارد شده یافت نشد");
+      if (siteTheme === "light") {
+        toast.error("کد درس وارد شده یافت نشد", {
+          theme: "light",
+          position: "bottom-left",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      } else {
+        toast.error("کد درس وارد شده یافت نشد", {
+          theme: "dark",
+          position: "bottom-left",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
     }
   }
 
@@ -180,12 +235,32 @@ function MainContent({ siteTheme, setSiteTheme, setTotalUnits }) {
       }
     }
   }
-  const resetStyle = {
-    display: resetAlert ? "flex" : "none",
-  };
+  
   function checkAlert() {
     if (courseInputs.code.current.value === "") {
-      setAlertText("فیلد کد درس نمی تواند خالی باشد");
+      if (siteTheme === "light") {
+        toast.error("فیلد کد درس نمی تواند خالی باشد", {
+          theme: "light",
+          position: "bottom-left",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      } else {
+        toast.error("فیلد کد درس نمی تواند خالی باشد", {
+          theme: "dark",
+          position: "bottom-left",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
       return true;
     }
 
@@ -227,10 +302,41 @@ function MainContent({ siteTheme, setSiteTheme, setTotalUnits }) {
     });
 
     if (needAlert === 1) {
-      setAlertText("درس وارد شده با یکی از دروس انتخاب شده قبل تداخل دارد");
+      if (siteTheme === "light") {
+        toast.error("درس وارد شده با یکی از دروس انتخاب شده قبل تداخل دارد", {
+          theme: "light",
+          position: "bottom-left",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      } else {
+        toast.error("درس وارد شده با یکی از دروس انتخاب شده قبل تداخل دارد", {
+          theme: "dark",
+          position: "bottom-left",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
       return true;
     } else if (needAlert === -1) {
-      setAlertText("در این روز و ساعت درس مذکور قبلا وارد شده است");
+      toast.error("در این روز و ساعت درس مذکور قبلا وارد شده است", {
+        theme: "dark",
+        position: "bottom-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       return true;
     }
 
@@ -243,8 +349,18 @@ function MainContent({ siteTheme, setSiteTheme, setTotalUnits }) {
         courseInputs.time.current.value === "" ||
         courseInputs.classType.current.value === ""
       ) {
-        setAlertText(
-          "اطلاعات لازم برای درس به طور کامل وارد نشده اند. لطفا اطلاعات را کامل کرده و دوباره امتحان کنید"
+        toast.error(
+          "اطلاعات لازم برای درس به طور کامل وارد نشده اند. لطفا اطلاعات را کامل کرده و دوباره امتحان کنید",
+          {
+            theme: "dark",
+            position: "bottom-left",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          }
         );
         return true;
       }
@@ -254,8 +370,18 @@ function MainContent({ siteTheme, setSiteTheme, setTotalUnits }) {
         courseInputs.time.current.value === "" ||
         courseInputs.classType.current.value === ""
       ) {
-        setAlertText(
-          "برای اضافه کردن زمان کلاس به درسی نیاز است که تمام ورودی های روزهای هفته، بازه زمانی و نوع برگزاری کلاس وارد شوند"
+        toast.error(
+          "برای اضافه کردن زمان کلاس به درسی نیاز است که تمام ورودی های روزهای هفته، بازه زمانی و نوع برگزاری کلاس وارد شوند",
+          {
+            theme: "dark",
+            position: "bottom-left",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          }
         );
         return true;
       }
@@ -267,6 +393,48 @@ function MainContent({ siteTheme, setSiteTheme, setTotalUnits }) {
     <>
       <div className="row mb-3">
         <div className="col-md-3">
+        {modal === 'open' && (
+  <div class="modal show" style={{ display: 'block' }} role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">تایید بازنشانی</h5>
+          <button
+            type="button"
+            class="close"
+            onClick={() => setModal('close')}
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>از بازنشانی مطمئن هستید؟ این عمل قابل بازگشت نیست</p>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-primary"
+            onClick={() => {
+              setModal('close'); // مدال را می‌بندیم
+              resetLS()
+            }}
+          >
+            بله
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            onClick={() => setModal('close')}
+          >
+            بستن
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+)}
+
           <input
             className={`form-control mb-2 ${
               siteTheme === "light"
@@ -391,7 +559,7 @@ function MainContent({ siteTheme, setSiteTheme, setTotalUnits }) {
           className={`btn btn-danger d-flex ${
             siteTheme === "light" ? "" : "btn-outline-light"
           }`}
-          onClick={() => setResetAlert(true)}
+          onClick={()=>{setModal('open')}}
         >
           <span>ریست</span>
         </button>
@@ -411,38 +579,11 @@ function MainContent({ siteTheme, setSiteTheme, setTotalUnits }) {
         >
           ثبت
         </button>
+      <button className={`btn mb-2 ${siteTheme==='dark'?'btn-outline-warning':'btn-outline-primary'}`} onClick={()=>{setmapw(!mapw)}} title="مشاهده برنامه هفتگی">
+        {mapw?(<i class="bi bi-eye-fill"></i>):(<i class="bi bi-eye-slash-fill"></i>)}
+      </button>
       </div>
-
-      <div className="reset-alert" style={resetStyle}>
-        <div
-          className={`reset-alert--inner-container alert ${
-            siteTheme === "light" ? "alert-danger" : "alert-light"
-          }`}
-        >
-          <p>
-            مطمئن هستید که میخواهید کل برنامه و دروس را به طور کامل پاک کنید؟
-          </p>
-          <div className="d-flex justify-content-between">
-            <button
-              className={`btn btn-secondary ${
-                siteTheme === "light" ? "btn-outline-dark" : "btn-outline-light"
-              }`}
-              onClick={() => setResetAlert(false)}
-            >
-              خیر
-            </button>
-            <button
-              className={`btn btn-danger ${
-                siteTheme === "light" ? "btn-outline-dark" : "btn-outline-light"
-              }`}
-              onClick={resetLS}
-            >
-              بله
-            </button>
-          </div>
-        </div>
-      </div>
-      <TimeTable courses={courses} siteTheme={siteTheme} />
+      {mapw?<TimeTable courses={courses} siteTheme={siteTheme} />:<></>}
       <CourseTable
         deleteCourse={deleteCourse}
         courses={courses}
