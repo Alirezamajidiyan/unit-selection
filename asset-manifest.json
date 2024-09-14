@@ -1,16 +1,18 @@
 {
   "files": {
-    "main.css": "/unit-selection/static/css/main.8d9babbe.css",
-    "main.js": "/unit-selection/static/js/main.fd058ba9.js",
+    "main.css": "/unit-selection/static/css/main.7fb17ece.css",
+    "main.js": "/unit-selection/static/js/main.28d21ea7.js",
+    "static/media/bootstrap-icons.woff?": "/unit-selection/static/media/bootstrap-icons.39795c0b4513de014cf8.woff",
+    "static/media/bootstrap-icons.woff2?": "/unit-selection/static/media/bootstrap-icons.b7bcc075b395c14ce8c2.woff2",
+    "static/media/Sahel-Bold.ttf": "/unit-selection/static/media/Sahel-Bold.5c4e28aebc687f8a3fd1.ttf",
     "static/media/Sahel.eot": "/unit-selection/static/media/Sahel.de9340ec560b044fd86c.eot",
-    "static/media/Sahel.ttf": "/unit-selection/static/media/Sahel.72ea6df7f4ff1b801942.ttf",
     "static/media/Sahel.woff2": "/unit-selection/static/media/Sahel.1a2efbcab5a0d61e5c0f.woff2",
     "index.html": "/unit-selection/index.html",
-    "main.8d9babbe.css.map": "/unit-selection/static/css/main.8d9babbe.css.map",
-    "main.fd058ba9.js.map": "/unit-selection/static/js/main.fd058ba9.js.map"
+    "main.7fb17ece.css.map": "/unit-selection/static/css/main.7fb17ece.css.map",
+    "main.28d21ea7.js.map": "/unit-selection/static/js/main.28d21ea7.js.map"
   },
   "entrypoints": [
-    "static/css/main.8d9babbe.css",
-    "static/js/main.fd058ba9.js"
+    "static/css/main.7fb17ece.css",
+    "static/js/main.28d21ea7.js"
   ]
 }
