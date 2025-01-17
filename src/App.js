@@ -5,8 +5,9 @@ import MainContent from "./components/MainContent";
 import { Routes, Route } from "react-router-dom";
 import AboutUs from "./components/AboutUs";
 import Error from "./components/ErrorElement";
-import { ToastContainer, toast } from "react-toastify"; // Import react-toastify
+import { ToastContainer, toast } from "react-toastify"; 
 import NotFound from "./components/NotFound";
+import SurveyComponent from "./components/SurveyComponent";
 let timeoutID = 1;
 
 function App() {
@@ -62,6 +63,7 @@ function App() {
             }
           />
           <Route path="/unit-selection/about" element={<AboutUs  theme={siteTheme}/>} />
+          <Route path="/unit-selection/survey" element={<SurveyComponent  theme={siteTheme}/>} />
           <Route element={<NotFound />} />
         </Routes>
         <ToastContainer />

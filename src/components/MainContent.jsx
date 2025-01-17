@@ -416,7 +416,7 @@ function MainContent({ siteTheme, setSiteTheme, setTotalUnits }) {
             type="button"
             class="btn btn-primary"
             onClick={() => {
-              setModal('close'); // مدال را می‌بندیم
+              setModal('close');
               resetLS()
             }}
           >
